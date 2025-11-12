@@ -96,6 +96,7 @@ void bfs(struct vertex *start_vertex, int start_index) {
         int unvisited;
         while ((unvisited = adj_vertex(current_vertex)) != -1) {
             graph[unvisited]->visited = true;
+            printf("->");
             display_vertex(unvisited);
             enqueue(unvisited);
         }
