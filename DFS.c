@@ -90,6 +90,7 @@ void dfs(int start) {
         } else {
             // Visit the adjacent vertex
             graph[unvisited]->visited = true;
+            printf("->");
             display_vertex(unvisited);
             push(unvisited);
         }
