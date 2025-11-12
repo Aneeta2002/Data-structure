@@ -119,4 +119,61 @@ void show_vertices() {
 int main() {
     int opt;
     char data;
-    i
+    int edge_1, edge_2, start;
+
+    // Initialize adjacency matrix
+    for (int i = 0; i < MAX; i++)
+        for (int j = 0; j < MAX; j++)
+            adj_matrix[i][j] = 0;
+
+    do {
+        printf("\n==== MENU ====\n");
+        printf("1) Add vertex\n");
+        printf("2) Create edge\n");
+        printf("3) BFS Traversal\n");
+        printf("0) Exit\n");
+        printf("Choose option: ");
+        scanf("%d", &opt);
+
+        switch (opt) {
+        case 1:
+            printf("\nEnter data to be added to vertex: ");
+            scanf(" %c", &data);
+            add_vertex(data);
+            break;
+
+        case 2:
+            show_vertices();
+            printf("\nEnter edge starting position: ");
+            scanf("%d", &edge_1);
+            printf("Enter edge ending position: ");
+            scanf("%d", &edge_2);
+            add_edge(edge_1, edge_2);
+            break;
+
+        case 3:
+            if (vertex_count == 0) {
+                printf("\nNo vertices to traverse.\n");
+                break;
+            }
+            show_vertices();
+            printf("\nEnter starting vertex position: ");
+            scanf("%d", &start);
+            if (start < 0 || start >= vertex_count) {
+                printf("\nInvalid start position!\n");
+            } else {
+                bfs(graph[start], start);
+            }
+            break;
+
+        case 0:
+            printf("\nExiting...\n");
+            break;
+
+        default:
+            printf("\nInvalid option!\n");
+        }
+    } while (opt != 0);
+
+    return 0;
+}
